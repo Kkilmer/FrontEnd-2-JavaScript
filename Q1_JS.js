@@ -1,16 +1,44 @@
-altura = []
+const readline = require('readline');
 
-homens = 0
-mulheres = 0
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
 
-for(var i=0; i<10; i++){
-    altura = prompt("Digite a altura da pessoa" + i+1 + "(em metros): ")
-    sexo = prompt("Digite o sexo da pessoa" + i+1 + "(M ou F):").toString
+let alturas = [];
+let homens = 0;
+let mulheres = 0;
 
-    Array.unshift(altura)
+rl.question("Digite a altura e o sexo de 5 pessoas (M ou F separados por espaço): ", (respostas) => {
+    const pessoas = respostas.split(' ');
+    for (let i = 0; i < pessoas.length; i += 2) {
+        const altura = parseFloat(pessoas[i]);
+        const sexo = pessoas[i + 1].toUpperCase();
 
-    if(sexo == 'M')
-    homens += 1
-    
+        alturas.push(altura);
 
-}
+        if (sexo === 'M') {
+            homens++;
+        } else if (sexo === 'F') {
+            mulheres++;
+        }
+    }
+
+    const maiorAltura = Math.max(...alturas);
+    const menorAltura = Math.min(...alturas);
+    const somaAlturaHomem = alturas.reduce((acc, altura) => {
+        if (altura > 0) {
+            return acc + altura;
+        } else {
+            return acc;
+        }
+    }, 0);
+    const mediaAlturaHomem = somaAlturaHomem / homens;
+
+    console.log(`A maior altura do grupo é: ${maiorAltura} metros`);
+    console.log(`A menor altura do grupo é: ${menorAltura} metros`);
+    console.log(`A média de altura dos homens é: ${mediaAlturaHomem.toFixed(2)} metros`);
+    console.log(`O número de mulheres é: ${mulheres}`);
+
+    rl.close();
+});
