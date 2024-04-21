@@ -1,4 +1,4 @@
-var alunos = [
+var alunos =[
     { nome: "Maria Joaquinha", notas: [8, 7.5, 9], curso: "Sistemas para Internet" },
     { nome: "João Ricardo", notas: [8, 8.5, 5], curso: "Direito" },
     { nome: "José Henrique", notas: [4, 10, 7], curso: "Administração" },
