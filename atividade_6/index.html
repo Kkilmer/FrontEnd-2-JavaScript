@@ -1,21 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="sty.css" media="screen"/>
-    <title>Lista de Tarefas</title>
+    <title>EX javascript</title>
+    <link rel="stylesheet" href="style.css">
+
 </head>
+<style>
+    h1{
+        text-align: center;
+        background-color: brown;
+        color: white;
+    }
+   #tabelaTarefas{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    border: 1px dashed black;
+    width: 250vw;
+
+   }
+</style>
 <body>
-    <h1>Lista de Tarefas</h1><br>
-    <div class="primeiro">
-        <label for="">Tarefas: </label>
-        <input type="text" name="tarefas" id="tarefas1"/><br><br>
-        <label for="">Descrição:</label>
-        <div id="Drs">
-            
-        </div>
-    </div> 
-    
+    <h1>6º Atividade - JS</h1>
+    <form id="formEx">
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" required>
+        <br>
+        <label for="descricao">Descrição:</label><br>
+        <textarea id="descricao" name="descricao" rows="3" required></textarea><br>
+
+        <button type="submit">Adicionar Tarefa</button>
+    </form>
+
+    <table id="tabelaTarefas">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Descrição</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            </tbody>
+    </table>
+
+    <script src="ex_front.js"></script>
+</body>
+</html>
 </body>
 </html>
