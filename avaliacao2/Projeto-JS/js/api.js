@@ -17,17 +17,36 @@ function obterMensagens() {
 
     return retorno;
 }
-
-function inserirMensagem(mensagem) {
-
-    /*
+function addMsg(){
+    var campoNome = document.getElementById("nome").value;
+    var campoEmail = document.getElementById("email").value;
+    var campoMensagem = document.getElementById("msg").value;
 
     var mensagem = {
-            nome: "nome da pessoa", 
-            email: "email informado", 
-            mensagem: "a mensagem informada"} 
+        nome: campoNome,
+        email: campoEmail,
+        mensagem: campoMensagem};
 
-    */
+    inserirMensagem(mensagem);
+    alert("Mensagem inserida com sucesso");
+}
+function listarMensagem(){
+    var mensagens = obterMensagens();
+    var tabela = $("#tabela tbody");
+
+    $.each(mensagens,function(index,mensagem){
+        var linha = '<tr>'+
+        '<td>'+ mensagem.id + '</td>' +
+        '<td>'+ mensagem.nome + '</td>' +
+        '<td>'+ mensagem.email + '</td>' +
+        '<td>'+ mensagem.mensagem + '</td>' +
+        '</tr>';
+        tabela.append(linha)
+    });
+
+
+}
+function inserirMensagem(mensagem) {
 
     var inserir = $.ajax({
 
@@ -40,18 +59,12 @@ function inserirMensagem(mensagem) {
     });
 }
 
-function validarUsuario(objLoginSenha) {
+function validarUsuario() {
 
-    //email: admin@admin.com
-    //senha: '1234'
-
-    /*
 
     var objLoginSenha = {
-            email: "email informado", 
-            senha: "senha informada"} 
-
-    */
+            email: $("#email").val(), 
+            senha: $("#senha").val()} 
 
     var retorno = false;
 
@@ -72,6 +85,12 @@ function validarUsuario(objLoginSenha) {
     validacao.done(function(data) {
         retorno = data;
     });
+
+    if (retorno){
+        window.location.href="mensagem.html"
+    } else {
+        alert("Login ou senha incorrete.")
+    }
 
     return retorno;
 }
